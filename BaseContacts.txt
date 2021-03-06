@@ -1,0 +1,1 @@
+[('Fabian', 'Œwiæ', 'skoczmaciej@grupa.net', '+48 507 411 846'), ('Inga', 'Surdel', 'arkadiuszszoltysik@labus.pl', '500 765 700'), ('Sonia', 'Kreczmer', 'stefankozon@kala-kosno.org', '+48 513 977 621'), ('Marcin', 'Mejer', 'szywalaida@borejko-czerner.pl', '+48 572 191 439'), ('Przemys³aw', 'Glapiak', 'stanislawuss@spoldzielnia.pl', '+48 575 164 654')]

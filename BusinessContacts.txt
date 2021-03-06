@@ -1,0 +1,1 @@
+[('Dawid', 'Galik', 'Kochman s.c.', '¯o³nierz', '+48 664 772 964'), ('Kaja', 'Wiercigroch', 'Orpel Sp.k.', 'Poœrednik ubezpieczeniowy', '882 743 525'), ('Borys', 'Fedak', 'FPUH Niedba³ Sp.k.', 'Doker', '887 795 944'), ('Nataniel', 'Malcharek', 'Stowarzyszenie Okraska', 'D¿okej', '+48 517 127 261'), ('Stefan', 'Bielat', 'Stowarzyszenie Potêga', 'Taksówkarz', '+48 739 052 218')]
