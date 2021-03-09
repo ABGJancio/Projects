@@ -1,0 +1,19 @@
+07-Mar-21 22:28:12 - root - WARNING - This will get logged to a file
+07-Mar-21 22:28:12 - root - DEBUG - This is a debug message
+07-Mar-21 22:28:12 - root - INFO - Admin logged in
+07-Mar-21 22:28:12 - root - ERROR - This is an error message
+07-Mar-21 22:28:12 - root - CRITICAL - This is a critical message
+07-Mar-21 22:28:12 - root - ERROR - John raised an error
+07-Mar-21 22:28:12 - root - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "c:\Users\User\Dropbox\PYTHON\MyLessons\RP_Logging.py", line 25, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+07-Mar-21 22:28:12 - root - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "c:\Users\User\Dropbox\PYTHON\MyLessons\RP_Logging.py", line 25, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+07-Mar-21 22:28:12 - example_logger - WARNING - This is a warning
+07-Mar-21 22:28:12 - __main__ - WARNING - This is a warning
+07-Mar-21 22:28:12 - __main__ - ERROR - This is an error

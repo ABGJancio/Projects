@@ -40,7 +40,7 @@ def measure(func):
     return wrapper
 
 
-@measure
+@measure # Is equivalent to the expression create_contacts = measure(create_contacts).
 def create_contacts():
     """Create class lists od fake contacts."""
     return [Contacts(fake.first_name(), fake.last_name(), fake.company_email(), fake.phone_number(), fake.company(), fake.job(), fake.phone_number()) for _ in range(1000)]

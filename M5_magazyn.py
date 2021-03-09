@@ -1,11 +1,13 @@
 """Doing business with Python."""
 
-store_items = {'Milk': [40, 'litr', 1.99],
-               'Sugar': [29, 'kg', 2.49],
-               'Tee': [12, 'pcs', 4.69]}
+import csv
 
+# store_items = {'Milk': [40, 'litr', 1.99],
+#               'Sugar': [29, 'kg', 2.49],
+#               'Tee': [12, 'pcs', 4.69]}
+store_items = {}
 sold_items = []
-profit = 0
+# profit = 0
 
 
 def get_items():
@@ -38,8 +40,8 @@ def sell_item():
     if not p_sell in store_items:
         print('No such a product in warehouse. Try again.')
         p_sell = input('Product name: ')
-   #else:
-   #    pass
+    # else:
+    #    pass
     q_sell = int(input('Quantity to sell: '))
     s_price = float(input('Sell price: '))
     u_sell = store_items.get(p_sell)[1]
@@ -60,8 +62,8 @@ def inventory():
 
 def get_income():
     """."""
-    revenues = sum([b*e for a, b, c, d, e in sold_items])
-    costs = sum([b*d for a, b, c, d, e in sold_items])
+    revenues = sum([float(b)*float(e) for a, b, c, d, e in sold_items])
+    costs = sum([float(b)*float(d) for a, b, c, d, e in sold_items])
     profit = revenues - costs
     return revenues, costs, profit
 
@@ -72,17 +74,57 @@ def show_profit():
     r, c, p = get_income()
     print(f'Income: {r:.2f}')
     print(f'Cost of purchase: {c:.2f}')
-    print(f'Operational profit: {p:.2f} \n')
+    print(f'Profit on sales: {p:.2f} \n')
+    return
+
+
+def export_sales_to_csv():
+    """Export database for sold items."""
+    with open('sold_items.csv', 'w', newline='') as csvfile:
+        sold_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+        for item in sold_items:
+            sold_writer.writerow(item)
+    return
+
+def import_sales_from_csv():
+    """Import database for sold items."""
+    with open('sold_items.csv', newline='') as csvfile:
+        sold_reader = csv.reader(csvfile, delimiter=",", quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+        for row in sold_reader:
+            sold_items.append(row)
+    return
+
+def export_items_to_csv():
+    """Export database for current items in the stock."""
+    with open('current_items.csv', mode='w', newline='') as csvfile:
+        fieldnames = ['name', 'quantity', 'unit', 'p_price']
+        item_writer = csv.DictWriter(csvfile, fieldnames=fieldnames, )
+        item_writer.writeheader()
+        for item, content in store_items.items():
+            item_writer.writerow({'name': item, 'quantity': content[0], 'unit': content[1], 'p_price': content[2]})
+    return
+
+
+def import_items_from_csv():
+    """Import database for current items in the stock."""
+    with open('current_items.csv', newline='') as csvfile:
+        items_reader = csv.DictReader(csvfile)
+        for row in items_reader:
+            store_items[row['name']] = [float(row['quantity']), row['unit'], float(row['p_price'])]
     return
 
 
 def start():
     """Prompt."""
     choice = input(
-        "\nWhat would you like to do?\nChoose: show, add, sell, profit or exit.\n")
+        "\nWhat would you like to do?\nChoose: load, show, add, sell, profit, save or exit.\n")
     if choice == "exit":
         print("Exiting... Bye!")
         exit(1)
+    if choice == "load":
+        import_items_from_csv()
+        import_sales_from_csv()
+        start()
     elif choice == "show":
         get_items()
         start()
@@ -104,8 +146,13 @@ def start():
     elif choice == "check":
         print(round(get_income()[2]), 2)
         start()
+    elif choice == "save":
+        export_sales_to_csv()
+        export_items_to_csv()
+        start()
     else:
         start()
 
-
+import_items_from_csv()
+import_sales_from_csv()
 start()
