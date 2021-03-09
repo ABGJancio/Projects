@@ -2,12 +2,13 @@
 
 import csv
 
+# initial doctionary
 # store_items = {'Milk': [40, 'litr', 1.99],
 #               'Sugar': [29, 'kg', 2.49],
 #               'Tee': [12, 'pcs', 4.69]}
 store_items = {}
 sold_items = []
-# profit = 0
+
 
 
 def get_items():
@@ -120,6 +121,8 @@ def start():
         "\nWhat would you like to do?\nChoose: load, show, add, sell, profit, save or exit.\n")
     if choice == "exit":
         print("Exiting... Bye!")
+        export_sales_to_csv()
+        export_items_to_csv()
         exit(1)
     if choice == "load":
         import_items_from_csv()
